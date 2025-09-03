@@ -18,7 +18,7 @@ const { assets, name } = await fetch(
 )
   .then((x) => x.json())
   .then(Release.parse);
-const version = "0.0.0.dev-4"; // name.replace(/^v/, "");
+const version = "0.0.0-dev.4"; // name.replace(/^v/, "");
 
 const packages = new Set<string>();
 
