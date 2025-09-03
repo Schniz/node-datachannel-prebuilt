@@ -136,7 +136,7 @@ await Bun.build({
   ],
 });
 await Bun.spawn({
-  cmd: ["tsdown"],
+  cmd: ["pnpm", "tsdown"],
 }).exited;
 await fs.rename(
   "packages/prebuilt/dist/datachannels.js",
