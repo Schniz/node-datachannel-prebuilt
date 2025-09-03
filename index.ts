@@ -18,7 +18,7 @@ const { assets, name } = await fetch(
 )
   .then((x) => x.json())
   .then(Release.parse);
-const version = "0.0.0-dev.4"; // name.replace(/^v/, "");
+const version = "0.0.0-dev.5"; // name.replace(/^v/, "");
 
 const packages = new Set<string>();
 
@@ -81,6 +81,7 @@ await Bun.write(
       ]),
     ),
     main: "dist/datachannels.cjs",
+    types: "types/datachannels.d.ts",
   }),
 );
 
@@ -134,6 +135,9 @@ await Bun.build({
     },
   ],
 });
+await Bun.spawn({
+  cmd: ["tsdown"],
+}).exited;
 await fs.rename(
   "packages/prebuilt/dist/datachannels.js",
   "packages/prebuilt/dist/datachannels.cjs",
